@@ -1,0 +1,40 @@
+plugins {
+    id 'org.jreleaser' version '0.2.0'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'co.igorski.Main'
+}
+
+jreleaser {
+    project {
+        website = 'https://igorski.co'
+        authors = ['Igorski']
+        license = 'Apache-2.0'
+    }
+
+    release {
+        github {
+            owner = 'igorstojanovski'
+            overwrite = true
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
